@@ -14,6 +14,7 @@ pytest-watch = "*"
 django = "*"
 beautifulsoup4 = "*"
 whitenoise = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3"
