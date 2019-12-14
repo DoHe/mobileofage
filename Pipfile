@@ -22,7 +22,7 @@ python_version = "3"
 [scripts]
 manage = "python manage.py"
 migrate = "python manage.py migrate"
-start = "python manage.py runserver"
+start = "env DEBUG=True python manage.py runserver"
 test = "pytest"
 test-watch = "ptw"
 static = "python manage.py collectstatic"
