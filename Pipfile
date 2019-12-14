@@ -1,0 +1,25 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+pylint = "*"
+pytest = "*"
+pytest-django = "*"
+pytest-watch = "*"
+
+[packages]
+django = "*"
+beautifulsoup4 = "*"
+
+[requires]
+python_version = "3"
+
+[scripts]
+manage = "python manage.py"
+migrate = "python manage.py migrate"
+start = "python manage.py runserver"
+test = "pytest"
+test-watch = "ptw"
