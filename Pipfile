@@ -13,6 +13,7 @@ pytest-watch = "*"
 [packages]
 django = "*"
 beautifulsoup4 = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3"
@@ -23,3 +24,4 @@ migrate = "python manage.py migrate"
 start = "python manage.py runserver"
 test = "pytest"
 test-watch = "ptw"
+static = "python manage.py collectstatic"
