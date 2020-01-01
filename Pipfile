@@ -15,6 +15,7 @@ django = "*"
 beautifulsoup4 = "*"
 whitenoise = "*"
 gunicorn = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3"

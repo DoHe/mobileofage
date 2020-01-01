@@ -1,11 +1,8 @@
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'THIS_IS_NOT_SECRET')
 
@@ -57,20 +54,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mobileofage.wsgi.application'
 
+DATABASES = {}
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+DATABASES['default'] = dj_database_url.parse(
+    os.getenv(
+        'DATABASE_URL',
+        'sqlite://' + os.path.join(BASE_DIR, 'db.sqlite3')
+    )
+)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -86,10 +77,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
