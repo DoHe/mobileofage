@@ -1,6 +1,8 @@
 import os
 
 import dj_database_url
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -9,6 +11,15 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'THIS_IS_NOT_SECRET')
 DEBUG = os.getenv('DEBUG') == 'True'
 
 ALLOWED_HOSTS = ['*']
+
+
+SENTRY_DSN = os.getenv('SENTRY_DSN')
+
+if SENTRY_DSN:
+    sentry_sdk.init(
+        SENTRY_DSN,
+        integrations=[DjangoIntegration()]
+    )
 
 
 # Application definition
