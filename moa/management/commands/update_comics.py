@@ -8,9 +8,12 @@ from moa.scraping.scrape import scrape_comic
 class Command(BaseCommand):
     help = 'Updates recent comics'
 
+    def add_arguments(self, parser):
+        parser.add_argument('-n', '--num', type=int, default=2)
+
     def handle(self, *args, **options):
         comic_id = ''
-        for i in range(5):
+        for i in range(options['num']):
             image, alt, title, date, comic_id, prev, nxt = scrape_comic(
                 COMIC_URL + comic_id
             )

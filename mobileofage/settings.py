@@ -70,7 +70,7 @@ DATABASES = {}
 DATABASES['default'] = dj_database_url.parse(
     os.getenv(
         'DATABASE_URL',
-        'sqlite://' + os.path.join(BASE_DIR, 'db.sqlite3')
+        'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
     )
 )
 
