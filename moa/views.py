@@ -1,3 +1,4 @@
+from django.contrib.syndication.views import Feed
 from django.views.generic.base import TemplateView
 
 from .constants import COMIC_URL
@@ -52,3 +53,19 @@ class Index(TemplateView):
         if nxt:
             context['next'] = '/?c=' + nxt
         return context
+
+
+class ComicFeed(Feed):
+    title = "Mobile of Age"
+    link = "/"
+    description = "All the newest Dumbing of Age comics in a mobile friendly way"
+    description_template = "feed.html"
+
+    def items(self):
+        return Comic.objects.order_by('-date')[:30]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_link(self, item):
+        return f"/?c={item.id}"
