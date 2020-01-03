@@ -59,7 +59,7 @@ class ComicFeed(Feed):
     title = "Mobile of Age"
     link = "/"
     description = "All the newest Dumbing of Age comics in a mobile friendly way"
-    description_template = "feed.html"
+    description_template = "feed/description.html"
 
     def items(self):
         return Comic.objects.order_by('-date')[:30]
