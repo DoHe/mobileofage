@@ -1,5 +1,5 @@
 import urllib.request
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlunparse
 
 from bs4 import BeautifulSoup
 
@@ -18,6 +18,12 @@ def _image_date(image_src):
     return name[:10]
 
 
+def _safe(url):
+    parsed = urlparse(url)
+    parsed = parsed._replace(scheme='https')
+    return urlunparse(parsed)
+
+
 def scrape_comic(url):
     resp = urllib.request.urlopen(url)
     html = resp.read().decode('utf-8')
@@ -29,4 +35,4 @@ def scrape_comic(url):
     nxt = soup.find('a', class_='navi-next')
     if nxt:
         nxt = _short(nxt['href'])
-    return image['src'], image['alt'], title.string, _image_date(image['src']), _short(title['href']), previous, nxt
+    return _safe(image['src']), image['alt'], title.string, _image_date(image['src']), _short(title['href']), previous, nxt

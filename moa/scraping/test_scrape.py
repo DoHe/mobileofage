@@ -34,7 +34,7 @@ def mock_new(monkeypatch, new):
 
 def test_scrape_comic_old(mock_old):
     image, alt, title, date, current, prev, nxt = scrape_comic('test')
-    assert image == 'http://www.dumbingofage.com/comics/2019-12-13-wish.png'
+    assert image == 'https://www.dumbingofage.com/comics/2019-12-13-wish.png'
     assert alt == 'END OF STORYLINE sorta'
     assert title == 'Wish'
     assert current == '2019/comic/book-10/01-birthday-pursuit/wish-2'
@@ -45,7 +45,7 @@ def test_scrape_comic_old(mock_old):
 
 def test_scrape_comic_new(mock_new):
     image, alt, title, date, current, prev, nxt = scrape_comic('test')
-    assert image == 'http://www.dumbingofage.com/comics/2019-12-14-sixflags.png'
+    assert image == 'https://www.dumbingofage.com/comics/2019-12-14-sixflags.png'
     assert alt == 'new storyline means new flashback now, apparently'
     assert title == 'Six Flags'
     assert current == '2019/comic/book-10/02-to-remind-you-of-my-love/sixflags'
