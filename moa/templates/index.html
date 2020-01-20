@@ -17,9 +17,11 @@
             <h1 class="title">
                 <a href="{{ url }}">{{ title }}</a>
             </h1>
-            <figure class="image">
-                <img src="{{ image }}" alt="{{ alt }}" title="{{ alt }}">
-            </figure>
+            <div style="max-width: 1000px; display: inline-block">
+                <figure class="image main-image">
+                    <img src="{{ image }}" alt="{{ alt }}" title="{{ alt }}">
+                </figure>
+            </div>
             <p>{{ alt }}</p>
             <nav role="navigation" aria-label="pagination">
                 <a class="button is-rounded" href="{{ previous }}">
